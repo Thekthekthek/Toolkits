@@ -170,7 +170,7 @@ type JSONResponse struct {
 
 func (t *Tools) ReadJSON(w http.ResponseWriter, r http.Request, data interface{}) error {
 	maxBytes := 1024 ^ 2
-	if t.MaxJSONSize == 0 {
+	if t.MaxJSONSize != 0 {
 		maxBytes = t.MaxJSONSize
 	}
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
